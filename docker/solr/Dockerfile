@@ -21,7 +21,6 @@ RUN groupadd -r --gid $SOLR_GID $SOLR_GROUP && \
 
 COPY --chown=solr:solr data /etc/solr_home/data/
 COPY --chown=solr:solr scripts /etc/solr_home/custom_scripts
-COPY --chown=solr:solr src /opt/app/
 
 RUN chown -R $SOLR_USER:$SOLR_GROUP $SOLR_HOME $SOLR_INSTALL /opt/app
 
@@ -34,7 +33,7 @@ RUN mv $SOLR_HOME/solr/* $SOLR_HOME
 RUN rm -fr $SOLR_HOME/server/solr
 RUN cd $SOLR_HOME/custom_scripts && chmod 755 init.sh
 
-RUN cd /opt/app/ && mvn package
+RUN cd $SOLR_HOME/custom_scripts/ && sh init.sh
 
 
 
