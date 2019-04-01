@@ -4,17 +4,30 @@ services:
     domainname: ".org"
     tty: true
     build:
-      context: .
+      context: ./solr
       dockerfile: Dockerfile
     container_name: solr_search_engine
     volumes:
-      - .:/opt/app
-    working_dir: /etc/solr_home
+      - .:/opt/app/solr
     stdin_open: true
-    expose:
-      - 8983
+    restart: on-failure
     ports:
       - 8983:8983
     labels:
       name: solr_app
       type: seach_engine
+
+  indexer:
+    domainname: ".org"
+    tty: true
+    stdin_open: true
+    hostname: solr
+    build:
+      context: ./../
+      dockerfile: ./docker/indexer/Dockerfile
+    container_name: indexer
+    restart: on-failure
+    labels:
+      name: indexer
+      type: search_engine
+

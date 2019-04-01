@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven ${maven.version}
+Build-Jdk: ${java.version}
+Class-Path: /opt/app/indexer/main/java
+Main-Class: com.naveen.api.SolrIndexBuilder

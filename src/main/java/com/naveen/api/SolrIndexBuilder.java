@@ -1,3 +1,6 @@
+package com.naveen.api;
+
+import com.naveen.dto.ReviewDataBean;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 
