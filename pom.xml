@@ -10,21 +10,16 @@
     <name>solr_app</name>
     <version>1.0</version>
     <build>
+        <resources>
+            <resource>
+                <directory>${project.build.directory}</directory>
+                <includes>
+                    <include>**/*.class</include>
+                    <include>**/*.java</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
-            <!--            <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jar-plugin</artifactId>
-                            <version>3.0.2</version>
-                            <configuration>
-                                <archive>
-                                    <manifest>
-                                        <addClasspath>true</addClasspath>
-                                        <classpathPrefix>lib/</classpathPrefix>
-                                        <mainClass>com.naveen.api.SolrIndexBuilder</mainClass>
-                                    </manifest>
-                                </archive>
-                            </configuration>
-                        </plugin>-->
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.1</version>
@@ -34,8 +29,6 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>com.naveen.api.SolrIndexBuilder</mainClass>
                         </manifest>
                     </archive>

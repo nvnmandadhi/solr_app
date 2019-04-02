@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   solr:
-    domainname: ".org"
+    domainname: "org"
     tty: true
     build:
       context: ./solr
@@ -18,10 +18,9 @@ services:
       type: seach_engine
 
   indexer:
-    domainname: ".org"
+    domainname: "org"
     tty: true
     stdin_open: true
-    hostname: solr
     build:
       context: ./../
       dockerfile: ./docker/indexer/Dockerfile
