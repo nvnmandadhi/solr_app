@@ -2,6 +2,7 @@ version: "3.3"
 services:
   solr:
     domainname: "org"
+    hostname: solr
     tty: true
     build:
       context: ./solr
@@ -19,6 +20,7 @@ services:
 
   indexer:
     domainname: "org"
+    hostname: indexer
     tty: true
     stdin_open: true
     build:
@@ -26,6 +28,8 @@ services:
       dockerfile: ./docker/indexer/Dockerfile
     container_name: indexer
     restart: on-failure
+    expose:
+      - 1044
     labels:
       name: indexer
       type: search_engine
